@@ -1,16 +1,16 @@
-import { useSelector, useDispatch } from 'react-redux';
-import { set } from './actions';
-import { increment } from './actions';
-import { decrement } from './actions';
+import { useSelector } from 'react-redux';
+import { set, increment, decrement } from './actions';
+import { useActions } from './use-actions';
 import { SetCounter } from './SetCounter';
-import { bindActionCreators } from 'redux';
+//import { bindActionCreators } from 'redux';
 
 export const Counter = () => {
   const incident = 'Incident';
   const count = useSelector((state) => state.count);
-  const dispatch = useDispatch();
+  const actions = useActions({ increment, decrement, set });
+  //const dispatch = useDispatch();
 
-  const actions = bindActionCreators({ increment, decrement, set }, dispatch);
+  //const actions = bindActionCreators({ increment, decrement, set }, dispatch);
   return (
     <main className="Counter">
       <h1>Days Since Last {incident}</h1>
